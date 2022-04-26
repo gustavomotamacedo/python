@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+from socket import htonl
 import time
 import pyautogui as pa
 
@@ -47,10 +48,16 @@ def saveAScreenshot(cont):
     pa.hotkey('alt', 'f4')
     time.sleep(0.5)
 
+def openVSCode():
+    pa.hotkey('win', 'r')
+    pa.write('Code')
+    pa.press('enter')
+    time.sleep(0.5)    
+
 cont1 = 0
 cont2 = 0
 while True:
-    escolha = pa.confirm(text='Escolha o que deseja fazer', title='App legal!', buttons=['Salvar ip no bloco de notas', 'Tirar um print', 'Parar'])
+    escolha = pa.confirm(text='Escolha o que deseja fazer', title='App legal!', buttons=['Salvar ip no bloco de notas', 'Tirar um print', 'Abrir VS Code','Parar'])
     print(escolha)
     if escolha == 'Salvar ip no bloco de notas':
         getIp()
@@ -59,5 +66,7 @@ while True:
     elif escolha == 'Tirar um print':
         saveAScreenshot(cont2)
         cont2 += 1
+    elif escolha == 'Abrir VS Code':
+        openVSCode()
     elif escolha == 'Parar' or escolha == None:
         break
