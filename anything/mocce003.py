@@ -26,7 +26,7 @@ def saveOnNotepad(cont):
     time.sleep(0.5)
     pa.hotkey('ctrl', 'v')
     pa.hotkey('ctrl', 's')
-    pa.write('ip-do-boboca{}.txt' .format(cont))
+    pa.write('ip-do-boboca{}.txt' .format(cont'))
     pa.press('enter')
     time.sleep(0.5)
     pa.hotkey('alt', 'f4')
