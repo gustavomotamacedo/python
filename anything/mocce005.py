@@ -55,12 +55,11 @@ while game == True:
         menu = pa.confirm('Você errou, consegue continuar?', 'Encontre a bolinha', buttons=['Sim', 'Nao'])
         if menu != 'Sim':
             pa.alert(f'Sua maior pontuacao foi {maior}, e voce perdeu {derotas} vezes', 'Fim', 'Ok, adeus')
-            break   
-        derotas += 1
-        print(derotas)
-        if derotas == 3:
+            break 
+        else: 
+            derotas += 1
+            print(derotas)
             dif = 500
-            derotas = 0
     else:
         vitorias += 1
         if vitorias >= maior:
