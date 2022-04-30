@@ -9,19 +9,14 @@ if menu == 'INICIAR':
     pg.mixer.music.play(fade_ms=1000)
     dif = 500
     vitorias = 0
-    print(vitorias)
     derotas = 0
-    print(derotas)
     maior = 0
-    print(maior)
     pos = int((rand.random() * 9) + 1)
-    print(pos)
     pa.alert("""O jogo funciona da seguinte maneira:
              Rapidamente será mostrada a posicao da bolinha;
              Voce devera acertar onde ela está em seguida, clicando na sua posicao
              Caso acerte voce ganhara 1 ponto e depois de uma certa quantidade de pontos a velocidade ira aumentar
-             Caso voce perca sua pontuacao e zerada
-             Caso voce perca 3 vezes sua velocidade e reiniciada""", 'Regras', timeout=5000)
+             Caso voce perca sua pontuacao e zerada""", 'Regras', timeout=5000)
 else:
     game = False
 while game == True:
@@ -49,27 +44,24 @@ while game == True:
     if bolinha != str(pos):
         if vitorias >= maior:
             maior = vitorias
-            print(maior)
         vitorias = 0
-        print(vitorias)
+        derotas += 1
+        dif = 500
         menu = pa.confirm('Você errou, consegue continuar?', 'Encontre a bolinha', buttons=['Sim', 'Nao'])
         if menu != 'Sim':
             pa.alert(f'Sua maior pontuacao foi {maior}, e voce perdeu {derotas} vezes', 'Fim', 'Ok, adeus')
+            pg.mixer.music.stop()
             break 
-        else: 
-            derotas += 1
-            print(derotas)
-            dif = 500
     else:
         vitorias += 1
         if vitorias >= maior:
             maior = vitorias
-            print(maior)
         pa.alert('Boa!', f'Pontos = {vitorias}', timeout=500)
         pa.alert('Você acertou!', f'Pontos = {vitorias}', timeout=500)
         menu = pa.confirm('Quer continuar?', f'Pontos = {vitorias}', buttons=['Sim', 'Nao'])
         if menu != 'Sim':
             pa.alert(f'Sua maior pontuacao foi {maior}, e voce perdeu {derotas} vezes', 'Fim', 'Ok, adeus')
+            pg.mixer.music.stop()
             break
         else:  
             pos = int((rand.random() * 9) + 1)
@@ -82,3 +74,5 @@ while game == True:
                     dif = 150
                 case 10:
                     dif = 100
+                case 20:
+                    dif = 50
