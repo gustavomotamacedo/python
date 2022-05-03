@@ -18,7 +18,7 @@ while True:
                 pygame.mixer.music.play(fade_ms=fade)
                 print("tecla 'a' foi apertada")
             if evento.key == ord('s'):
-                pygame.mixer.music.load(f'{instrumento}_C.ogg')
+                pygame.mixer.music.load(f'{instrumento}_D.ogg')
                 pygame.mixer.music.play(fade_ms=fade)
                 print("tecla 's' foi apertada")
             if evento.key == ord('d'):
