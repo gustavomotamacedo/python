@@ -42,39 +42,28 @@ ouro = ouro.replace(',', '.')
 
 tabela = pd.read_excel(r'C:\Users\Gustavo Macedo\Documents\GitHub\python\automacao\selenium\Produtos.xlsx')
 
-print(tabela)
-
-i = 0
+tabela.to_excel(r'C:\Users\Gustavo Macedo\Documents\GitHub\python\automacao\selenium\Produtos_Velho.xlsx', index = False)
 
 #atualiza a coluna 'cortação'
-
-for tipo in tabela['Moeda']:
-    if tipo == 'Dólar':
-        tabela['Cotação'][i] = dolar
-    elif tipo == 'Euro':
-        tabela['Cotação'][i] = euro
-    else:
-        tabela['Cotação'][i] = ouro
-    i += 1
-
-print(tabela)
+for i in range(len(tabela['Moeda'])):
+        if tabela['Moeda'][i] == 'Dólar':
+            #dolar
+            tabela['Cotação'][i] = dolar
+        elif tabela['Moeda'][i] == 'Euro':
+            #euro
+            tabela['Cotação'][i] = euro
+        else:
+            #ouro
+            tabela['Cotação'][i] = ouro
 
 # atualizando preços
-i = 0
-
-for preco in tabela['Preço de Compra']:
+for i in range(len(tabela['Preço de Compra'])):
+    #preço de compra
     tabela['Preço de Compra'][i] = float(tabela['Preço Original'][i]) * float(tabela['Cotação'][i])
-    i += 1
 
-print(tabela)
-
-i = 0
-
-for preco in tabela['Preço de Venda']:
+for i in range(len(tabela['Preço de Venda'])):
+    #preço de venda
     tabela['Preço de Venda'][i] = float(tabela['Preço de Compra'][i]) * float(tabela['Margem'][i])
-    i += 1
-
-print(tabela)
 
 #criando uma nova tabela, atualizada
-tabela.to_excel(r'C:\Users\Gustavo Macedo\Documents\GitHub\python\automacao\selenium\Produtos_Novo.xls', index= False) #index é false para não salvar a coluna automática index!
+tabela.to_excel(r'C:\Users\Gustavo Macedo\Documents\GitHub\python\automacao\selenium\Produtos_Novo.xlsx', index= False) #index é false para não salvar a coluna automática index!
